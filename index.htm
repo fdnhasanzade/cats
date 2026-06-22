@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <button onclick="getData()">next</button>
+
+    <script>
+        const div = document.querySelector("div")
+        const getData = async () => {
+            const response = await fetch("https://api.thecatapi.com/v1/images/search");
+            const data = await response.json()
+            const item = data[0]
+            div.innerHTML += ` <img src="${item.url}" width="${item.width}" height="${item.height}">
+            <p>${item.id}</p>`
+        }
+
+        for (let i = 0; i < 100; i++) {
+
+            getData()
+            
+        }
+
+let data 
+        // fetch("https://raw.githubusercontent.com/TheOksigen/purfect_data/refs/heads/main/yemekler.json")
+        //     .then(res => res.json())
+        //     .then(ress => data = ress)
+
+
+
+
+    </script>
+</body>
+
+</html>
